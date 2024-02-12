@@ -24,8 +24,8 @@ if cevap == "1":
 
 elif cevap == "2":
     # Kullanıcıdan başlangıç ve bitiş tarihlerini alma
-    start_date = input("Başlangıç Tarihi (YYYY-MM-DD): ")
-    end_date = input("Bitiş Tarihi (YYYY-MM-DD): ")
+    başlangıç_tarihi = input("Başlangıç Tarihi (YYYY-MM-DD): ")
+    bitiş_tarihi = input("Bitiş Tarihi (YYYY-MM-DD): ")
     data = yf.download(x, start=start_date, end=end_date)['Close']
     # Günlük getiri hesabı
     daily_returns = data.pct_change()
