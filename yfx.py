@@ -4,13 +4,8 @@ import matplotlib.pyplot as plt
 print("Merhaba , sizlere seçtiğiniz hisse senetleri hakkında bilgi veren bir projedesiniz.\n*Eğer 1 rakamına basarak hisse senedinin geçmiş (1 Aylık,1 günlük)bilgilerine ve güncel açlış kapanış vs\nbilgilerine ulaşabilirsiniz.\n*2 Rakamına basarak günlük taşıma bilgileri,grafiklerini ve devir Kapanış grafiğine ulaşabilirsiniz.")
 x=input('Hisse Adı: ')
 cevap=input('İşlem:  ')
-# Kullanıcıdan başlangıç ve bitiş tarihlerini alın
-start_date = input("Başlangıç Tarihi (YYYY-MM-DD): ")
-end_date = input("Bitiş Tarihi (YYYY-MM-DD): ")
 
 st = yf.Ticker(x)
-data = yf.download(x, start=start_date, end=end_date)['Close']
-daily_returns = data.pct_change()
 
 if cevap == "1":
     data = st.history(period="1mo", interval="1d")
@@ -28,8 +23,14 @@ if cevap == "1":
 
 
 elif cevap == "2":
+    # Kullanıcıdan başlangıç ve bitiş tarihlerini alma
+    start_date = input("Başlangıç Tarihi (YYYY-MM-DD): ")
+    end_date = input("Bitiş Tarihi (YYYY-MM-DD): ")
+    data = yf.download(x, start=start_date, end=end_date)['Close']
+    # Günlük getiri hesabı
+    daily_returns = data.pct_change()
     print(f"Günlük getirisi:{daily_returns}")
-  
+    #Grafik
     fig, axs = plt.subplots(2, 1, figsize=(5, 5))
 
     
