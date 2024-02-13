@@ -2,7 +2,7 @@ import yfinance as yf
 import pandas as pd
 import matplotlib.pyplot as plt
 print("Merhaba , sizlere seçtiğiniz hisse senetleri hakkında bilgi veren bir projedesiniz.\n*Eğer 1 rakamına basarak hisse senedinin geçmiş (1 Aylık,1 günlük)bilgilerine ve güncel açlış kapanış vs\nbilgilerine ulaşabilirsiniz.\n*2 Rakamına basarak günlük taşıma bilgileri,grafiklerini ve devir Kapanış grafiğine ulaşabilirsiniz.")
-x=input('Hisse Adı: ')
+x=input('Hisse Adı: ').upper()
 cevap=input('İşlem:  ')
 
 st = yf.Ticker(x)
