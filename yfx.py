@@ -49,6 +49,7 @@ elif cevap == "2":
     plt.show()
 else:
     print("Geçersiz bir işlem seçtiniz. Lütfen '1' veya '2' girin.")
+    
 
 
 
