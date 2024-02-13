@@ -24,23 +24,23 @@ if cevap == "1":
 
 elif cevap == "2":
     # Kullanıcıdan başlangıç ve bitiş tarihlerini alma
-    başlangıç_tarihi = input("Başlangıç Tarihi (YYYY-MM-DD): ")
-    bitiş_tarihi = input("Bitiş Tarihi (YYYY-MM-DD): ")
-    data = yf.download(x, start=start_date, end=end_date)['Close']
+    b_tarihi = input("Başlangıç Tarihi (YYYY-MM-DD): ")
+    son_tarih = input("Bitiş Tarihi (YYYY-MM-DD): ")
+    data = yf.download(x, start=b_tarihi , end=son_tarih)['Close']
     # Günlük getiri hesabı
-    daily_returns = data.pct_change()
-    print(f"Günlük getirisi:{daily_returns}")
+    g_getiri = data.pct_change()
+    print(f"Günlük getirisi:{g_getiri}")
     #Grafik
     fig, axs = plt.subplots(2, 1, figsize=(5, 5))
 
     
     data.plot(ax=axs[0],color="red")
-    axs[0].set_title('Closing Prices of Tech Giants')
-    axs[0].set_ylabel('Price ($)')
+    axs[0].set_title('Kapanış Fiyatı')
+    axs[0].set_ylabel('fiyat ($)')
 
     
-    daily_returns.hist(bins=50, ax=axs[1],color="yellow")
-    axs[1].set_title('Histogram of Daily Returns')
+    g_getiri.hist(bins=50, ax=axs[1],color="yellow")
+    axs[1].set_title('Günlük Getirilerin Histogramı')
 
    
     plt.tight_layout()
